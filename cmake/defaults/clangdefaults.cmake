@@ -33,3 +33,10 @@ set(_PXR_CXX_FLAGS "${_PXR_GCC_CLANG_SHARED_CXX_FLAGS} -DTF_NO_GNU_EXT")
 if(CMAKE_USE_PTHREADS_INIT)
     _disable_warning("unused-command-line-argument")
 endif()
+
+_disable_warning("undefined-var-template")
+
+# clang doesn't print colored diagnostics when invoked from Ninja
+if(UNIX AND CMAKE_GENERATOR STREQUAL "Ninja")
+  set(_PXR_CXX_FLAGS "-fcolor-diagnostics ${_PXR_CXX_FLAGS}")
+endif()

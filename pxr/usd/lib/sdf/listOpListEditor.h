@@ -121,17 +121,17 @@ private:
         }
 
         const boost::array<SdfListOpType, 4> opTypes = {
-            SdfListOpTypeExplicit,
+            {SdfListOpTypeExplicit,
             SdfListOpTypeAdded,
             SdfListOpTypeDeleted,
-            SdfListOpTypeOrdered
+            SdfListOpTypeOrdered}
         };
 
         // Check if any of the list operation vectors have changed and validate
         // their new contents.
         bool anyChanged = false;
         boost::array<bool, 4> opListChanged = { 
-            false, false, false, false 
+            {false, false, false, false}
         };
 
         for (int i = 0; i < opTypes.size(); ++i) {

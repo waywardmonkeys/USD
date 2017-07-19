@@ -69,7 +69,7 @@ function(pxr_python_bin BIN_NAME)
             ${infile}
             ${outfile}
     )
-    list(APPEND outputs ${outfile})
+    # list(APPEND outputs ${outfile})
 
     install(
         PROGRAMS ${outfile}
