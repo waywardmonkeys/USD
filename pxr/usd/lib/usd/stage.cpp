@@ -6186,7 +6186,7 @@ struct UsdStage::_ResolveInfoResolver
     bool
     ProcessFallback()
     {
-        if (const bool hasFallback = UsdSchemaRegistry::HasField(
+        if (UsdSchemaRegistry::HasField(
                 _attr.GetPrim().GetTypeName(), _attr.GetName(), 
                 SdfFieldKeys->Default, _extraInfo->defaultOrFallbackValue)) {
             _resolveInfo->_source = UsdResolveInfoSourceFallback;
