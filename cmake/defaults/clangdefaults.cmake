@@ -26,6 +26,11 @@ include(gccclangshareddefaults)
 
 set(_PXR_CXX_FLAGS "${_PXR_GCC_CLANG_SHARED_CXX_FLAGS}")
 
+# clang doesn't print colored diagnostics when invoked from Ninja
+if(UNIX AND CMAKE_GENERATOR STREQUAL "Ninja")
+  set(_PXR_CXX_FLAGS "-fcolor-diagnostics ${_PXR_CXX_FLAGS}")
+endif()
+
 # clang annoyingly warns about the -pthread option if it's only linking.
 if(CMAKE_USE_PTHREADS_INIT)
     _disable_warning("unused-command-line-argument")
